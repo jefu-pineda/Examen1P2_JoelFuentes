@@ -10,12 +10,12 @@ package examen1p2_joelfuentes;
  */
 public class SpidermanClassic extends Personaje{
     SpidermanClassic(String nombre, String universo) {
-        this.nombre = nombre;
-        this.universo = universo;
+        this.setNombre(nombre);
+        this.setUniverso(universo);
     }
     
     @Override
-    double atacar() {
-        return this.ataque;
+    void atacar(Personaje atacado) {
+        atacado.setVida((int) (atacado.getVida() - this.getAtaque()));
     }
 }

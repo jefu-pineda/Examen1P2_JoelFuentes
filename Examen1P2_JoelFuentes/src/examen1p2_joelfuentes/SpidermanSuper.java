@@ -13,12 +13,12 @@ import java.util.Random;
 public class SpidermanSuper extends Personaje {
     public static Random rand = new Random();
     SpidermanSuper(String nombre, String universo) {
-        this.nombre = nombre;
-        this.universo = universo;
+        this.setNombre(nombre);
+        this.setUniverso(universo);
     }
     
     @Override
-    double atacar() {
-        return this.ataque * rand.nextDouble(1.1,1.2);
+    void atacar(Personaje atacado) {
+        atacado.setVida((int) (atacado.getVida() - this.getAtaque()*rand.nextDouble(1.1,1.2)));
     }
 }

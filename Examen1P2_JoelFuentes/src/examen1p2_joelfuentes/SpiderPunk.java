@@ -8,16 +8,19 @@ package examen1p2_joelfuentes;
  *
  * @author jefue
  */
-public class SpidermanAlien extends Personaje{
-
-    SpidermanAlien(String nombre, String universo) {
+public class SpiderPunk extends Personaje{
+    SpiderPunk(String nombre, String universo) {
         this.setNombre(nombre);
         this.setUniverso(universo);
     }
     
     @Override
     void atacar(Personaje atacado) {
-        atacado.setVida((int) (atacado.getVida()-this.getAtaque()*1.3));
+        if (atacado instanceof SpidermanBlindado)
+        {
+            atacado.setVida((int) (atacado.getVida() - this.getAtaque()*1.15));
+        } else {
+            atacado.setVida((int) (atacado.getVida() - this.getAtaque()));
+        }
     }
-    
 }

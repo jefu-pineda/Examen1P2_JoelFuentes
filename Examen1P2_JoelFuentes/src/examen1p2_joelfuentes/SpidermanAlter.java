@@ -11,12 +11,16 @@ package examen1p2_joelfuentes;
 public class SpidermanAlter extends Personaje {
     
     SpidermanAlter(String nombre, String universo) {
-        this.nombre = nombre;
-        this.universo = universo;
+        this.setNombre(nombre);
+        this.setUniverso(universo);
     }
     
     @Override
-    double atacar() {
-        return 1.1 * this.ataque;
+    void atacar(Personaje atacado) {
+        if (atacado instanceof SpiderPunk) {
+            atacado.setVida((int) (atacado.getVida() - this.getAtaque()*1.10));
+        } else {
+            atacado.setVida((int) (atacado.getVida() - this.getAtaque()));
+        }
     }
 }
