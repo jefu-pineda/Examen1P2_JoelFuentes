@@ -188,49 +188,50 @@ public class examen1p2_joelfuentes {
         Enemigos.add(spiderman);
         System.out.println("Volviendo al menu principal");
     }
-    
+
     public static void listarSpidermen() {
         for (int i = 0; i < Spidermen.size(); i++)
         {
             System.out.println(i + ". " + Spidermen.get(i));
         }
     }
-    
+
     public static void listarEnemigos() {
         for (int i = 0; i < Enemigos.size(); i++)
         {
             System.out.println(i + ". " + Enemigos.get(i));
         }
     }
-    
+
     public static void listarTodos() {
         listarSpidermen();
         listarEnemigos();
     }
-    
+
     public static void modificarSpiderman() {
         boolean bandera = true;
+        OUTER:
         while (bandera)
         {
-        listarSpidermen();
-        System.out.print("Ingrese el indice del spiderman a modificar: ");
-        int indice = leer.nextInt();
+            listarSpidermen();
+            System.out.print("Ingrese el indice del spiderman a modificar: ");
+            int indice = leer.nextInt();
             if (indice < 0 || indice >= Spidermen.size())
             {
                 System.out.println("Indice no valido");
                 System.out.println("Intente otra vez");
                 continue;
             }
-        leer.nextLine();
-        
-        Personaje modificar = Spidermen.get(indice);
-        System.out.println("Que desea modificar de " + modificar.getNombre());
-        System.out.println("1) Nombre");
-        System.out.println("2) Universo");
-        System.out.println("3) Ataque");
-        System.out.print("Ingrese su opcion: ");
-        int op = leer.nextInt();
-        leer.nextLine();
+            leer.nextLine();
+
+            Personaje modificar = Spidermen.get(indice);
+            System.out.println("Que desea modificar de " + modificar.getNombre());
+            System.out.println("1) Nombre");
+            System.out.println("2) Universo");
+            System.out.println("3) Ataque");
+            System.out.print("Ingrese su opcion: ");
+            int op = leer.nextInt();
+            leer.nextLine();
             switch (op)
             {
                 case 1 ->
@@ -240,16 +241,34 @@ public class examen1p2_joelfuentes {
                     System.out.println("Antiguo nombre: " + modificar.getNombre());
                     modificar.setNombre(nombre);
                     System.out.println("Nuevo nombre: " + modificar.getNombre());
+                    break OUTER;
                 }
-                case 2 -> {
+                case 2 ->
+                {
                     System.out.println("Ingrese el nuevo universo de " + modificar.getNombre() + ": ");
                     String universo = leer.nextLine();
                     System.out.println("Antiguo universo: " + modificar.getUniverso());
                     modificar.setUniverso(universo);
                     System.out.println("Nuevo universo: " + modificar.getUniverso());
+                    break OUTER;
                 }
-                default -> throw new AssertionError();
+                case 3 ->
+                {
+                    System.out.println("Ingrese el nuevo danno de " + modificar.getNombre() + ": ");
+                    double danno = leer.nextDouble();
+                    leer.nextLine();
+                    System.out.println("Antiguo danno: " + modificar.getNombre());
+                    modificar.setAtaque(danno);
+                    System.out.println("Nuevo danno: " + modificar.getNombre());
+                    break OUTER;
+                }
+                default ->
+                {
+                    System.out.println("Input no valido :/");
+                    System.out.println("Ingrese otra vez");
+                }
             }
         }
     }
+    
 }
