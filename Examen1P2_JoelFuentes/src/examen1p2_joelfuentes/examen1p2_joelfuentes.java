@@ -213,6 +213,7 @@ public class examen1p2_joelfuentes {
             }
         }
         Spidermen.add(spiderman);
+        System.out.println("Se ha modificado su Spiderman correctamente");
         System.out.println("Volviendo al menu principal");
 
     }
@@ -277,6 +278,7 @@ public class examen1p2_joelfuentes {
             }
         }
         Enemigos.add(spiderman);
+        System.out.println("Se ha agregado su enemigo correctamente");
         System.out.println("Volviendo al menu principal");
     }
 
@@ -348,9 +350,9 @@ public class examen1p2_joelfuentes {
                     System.out.println("Ingrese el nuevo danno de " + modificar.getNombre() + ": ");
                     double danno = leer.nextDouble();
                     leer.nextLine();
-                    System.out.println("Antiguo danno: " + modificar.getNombre());
+                    System.out.println("Antiguo danno: " + modificar.getAtaque());
                     modificar.setAtaque(danno);
-                    System.out.println("Nuevo danno: " + modificar.getNombre());
+                    System.out.println("Nuevo danno: " + modificar.getAtaque());
                     break OUTER;
                 }
                 default ->
@@ -360,6 +362,8 @@ public class examen1p2_joelfuentes {
                 }
             }
         }
+        System.out.println("Se ha modificado su spiderman correctamente");
+        System.out.println("Volviendo al menu...");
     }
 
     public static void modificarEnemigo(int indice) {
@@ -400,9 +404,9 @@ public class examen1p2_joelfuentes {
                     System.out.println("Ingrese el nuevo danno de " + modificar.getNombre() + ": ");
                     double danno = leer.nextDouble();
                     leer.nextLine();
-                    System.out.println("Antiguo danno: " + modificar.getNombre());
+                    System.out.println("Antiguo danno: " + modificar.getAtaque());
                     modificar.setAtaque(danno);
-                    System.out.println("Nuevo danno: " + modificar.getNombre());
+                    System.out.println("Nuevo danno: " + modificar.getAtaque());
                     break OUTER;
                 }
                 default ->
@@ -412,7 +416,8 @@ public class examen1p2_joelfuentes {
                 }
             }
         }
-
+        System.out.println("Se ha modificado su enemigo correctamente");
+        System.out.println("Volviendo al menu...");
     }
 
     public static void eliminarSpiderman(int indice) {
@@ -426,6 +431,7 @@ public class examen1p2_joelfuentes {
         }
         leer.nextLine();
 
+        System.out.println(Spidermen.get(indice).getNombre() + " eliminado");
         Spidermen.remove(indice);
     }
 
@@ -439,7 +445,8 @@ public class examen1p2_joelfuentes {
             indice = leer.nextInt();
         }
         leer.nextLine();
-
+        
+        System.out.println(Enemigos.get(indice) + " eliminado");
         Enemigos.remove(indice);
     }
 
@@ -530,6 +537,7 @@ public class examen1p2_joelfuentes {
         }
     }
 
+    //asigna una vida random a cada spiderman en el array
     public static void asignarVida() {
         for (Personaje spiderman : Spidermen)
         {
