@@ -11,6 +11,7 @@ import java.util.*;
  * @author jefue
  */
 public class examen1p2_joelfuentes {
+
     //fila 1 asiento 6
     public static Scanner leer = new Scanner(System.in);
     public static Random rand = new Random();
@@ -350,7 +351,7 @@ public class examen1p2_joelfuentes {
             indice = leer.nextInt();
         }
         leer.nextLine();
-        
+
         System.out.println(Enemigos.get(indice) + " eliminado");
         Enemigos.remove(indice);
     }
@@ -384,7 +385,7 @@ public class examen1p2_joelfuentes {
                 System.out.println("Vida: " + enemigo.getVida());
                 System.out.println("Ataque " + enemigo.getAtaque());
                 System.out.println("\nPELEA!!!!\n");
-                
+
                 ganador = pelea(spiderman, enemigo);
                 System.out.println("\nEL GANADOR ESSSSS....");
                 System.out.println(ganador.getNombre() + " del universo " + ganador.getUniverso());
@@ -408,32 +409,34 @@ public class examen1p2_joelfuentes {
             } else if (puntosEnemigo > puntosSpider)
             {
                 System.out.println("\nHAN VENCIDO LOS ENEMIGOS");
-            } else if (puntosSpider == puntosEnemigo) 
+            } else if (puntosSpider == puntosEnemigo)
             {
                 System.out.println("\nES UN EMPATEEEEEE!!!");
                 System.out.println("---Desempate---");
                 Personaje desempateSpider = new SpidermanClassic("Spiderman que desempata", "0001 >:)");
                 Personaje desempateEnemigo = new SpidermanAlter("Enemigo que no lo quiere dejar desempatar", "1000 >:(");
                 generarVida();
-                
+
                 int dannoSpider = 0;
                 int vidaSpider = 0;
-                for(Personaje spiderman: Spidermen) {
+                for (Personaje spiderman : Spidermen)
+                {
                     dannoSpider += spiderman.getAtaque();
                     vidaSpider += spiderman.getVida();
                 }
                 desempateSpider.setAtaque(dannoSpider);
                 desempateSpider.setVida(vidaSpider);
-                
+
                 int dannoEnemigo = 0;
                 int vidaEnemigo = 0;
-                for (Personaje enemigo: Enemigos) {
+                for (Personaje enemigo : Enemigos)
+                {
                     dannoEnemigo += enemigo.getAtaque();
                     vidaEnemigo += enemigo.getVida();
                 }
                 desempateEnemigo.setAtaque(dannoEnemigo);
                 desempateEnemigo.setVida(vidaEnemigo);
-                
+
                 System.out.println("Spiderman Peleador: ");
                 System.out.println(desempateSpider.getNombre() + " del universo " + desempateSpider.getUniverso());
                 System.out.println("Vida: " + desempateSpider.getVida());
@@ -443,7 +446,7 @@ public class examen1p2_joelfuentes {
                 System.out.println("Vida: " + desempateEnemigo.getVida());
                 System.out.println("Ataque " + desempateEnemigo.getAtaque());
                 System.out.println("\nPELEA!!!!\n");
-                
+
                 Personaje ganador = pelea(desempateSpider, desempateEnemigo);
                 System.out.println("\nEL GANADOR ESSSSS....");
                 System.out.println(ganador.getNombre() + " del universo " + ganador.getUniverso());
@@ -456,9 +459,12 @@ public class examen1p2_joelfuentes {
                 }
 
                 System.out.println("Spidermen: " + puntosSpider + ", Enemigos: " + puntosEnemigo);
-                if (ganador.equals(desempateSpider))
+                if (puntosSpider > puntosEnemigo)
                 {
-                    System.out.println("");
+                    System.out.println("\nHAN VENCIDO LOS SPIDERMEN");
+                } else if (puntosEnemigo > puntosSpider)
+                {
+                    System.out.println("\nHAN VENCIDO LOS ENEMIGOS");
                 }
             }
             System.out.println("Volviendo al menu principal...");
@@ -514,7 +520,7 @@ public class examen1p2_joelfuentes {
         }
         return ganador;
     }
-    
+
     //menu principal
     public static void menu() {
         boolean bandera = true;
@@ -536,7 +542,8 @@ public class examen1p2_joelfuentes {
             int opcion = leer.nextInt();
             switch (opcion)
             {
-                case 0 -> {
+                case 0 ->
+                {
                     System.out.println("Gracias por probar");
                     System.exit(0);
                 }
