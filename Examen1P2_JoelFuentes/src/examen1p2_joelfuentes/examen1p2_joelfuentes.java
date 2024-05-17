@@ -11,7 +11,7 @@ import java.util.*;
  * @author jefue
  */
 public class examen1p2_joelfuentes {
-
+    //fila 1 asiento 6
     public static Scanner leer = new Scanner(System.in);
     public static Random rand = new Random();
     public static ArrayList<Personaje> Spidermen = new ArrayList();
