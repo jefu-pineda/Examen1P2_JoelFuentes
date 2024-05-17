@@ -39,8 +39,32 @@ public class examen1p2_joelfuentes {
         boolean bandera = true;
         do
         {
+            System.out.println("1) Agregar Spiderman");
+            System.out.println("2) Agregar Enemigo");
+            System.out.println("3) Listar Spidermen");
+            System.out.println("4) Listar Enemigos");
+            System.out.println("5) Listar Todos");
+            System.out.println("6) Modificar Spiderman");
+            System.out.println("7) Modificar Enemigo");
+            System.out.println("8) Eliminar Spiderman");
+            System.out.println("9) Eliminar Enemigo");
+            System.out.println("10) Jugar");
             opcion = leer.nextInt();
-
+            switch (opcion)
+            {
+                case 1 -> {
+                    agregarSpiderman();
+                } 
+                case 2 -> {
+                    agregarEnemigo();
+                }
+                case 3 -> {
+                    listarSpidermen();
+                }
+                case 4 -> {
+                    
+                }
+            }
         } while (bandera);
     }
 
@@ -270,5 +294,103 @@ public class examen1p2_joelfuentes {
             }
         }
     }
+
+    public static void modificarEnemigo() {
+        boolean bandera = true;
+        OUTER:
+        while (bandera)
+        {
+            listarEnemigos();
+            System.out.print("Ingrese el indice del enemigo a modificar: ");
+            int indice = leer.nextInt();
+            if (indice < 0 || indice >= Spidermen.size())
+            {
+                System.out.println("Indice no valido");
+                System.out.println("Intente otra vez");
+                continue;
+            }
+            leer.nextLine();
+
+            Personaje modificar = Enemigos.get(indice);
+            System.out.println("Que desea modificar de " + modificar.getNombre());
+            System.out.println("1) Nombre");
+            System.out.println("2) Universo");
+            System.out.println("3) Ataque");
+            System.out.print("Ingrese su opcion: ");
+            int op = leer.nextInt();
+            leer.nextLine();
+            switch (op)
+            {
+                case 1 ->
+                {
+                    System.out.println("Ingrese el nuevo nombre de " + modificar.getNombre() + ": ");
+                    String nombre = leer.nextLine();
+                    System.out.println("Antiguo nombre: " + modificar.getNombre());
+                    modificar.setNombre(nombre);
+                    System.out.println("Nuevo nombre: " + modificar.getNombre());
+                    break OUTER;
+                }
+                case 2 ->
+                {
+                    System.out.println("Ingrese el nuevo universo de " + modificar.getNombre() + ": ");
+                    String universo = leer.nextLine();
+                    System.out.println("Antiguo universo: " + modificar.getUniverso());
+                    modificar.setUniverso(universo);
+                    System.out.println("Nuevo universo: " + modificar.getUniverso());
+                    break OUTER;
+                }
+                case 3 ->
+                {
+                    System.out.println("Ingrese el nuevo danno de " + modificar.getNombre() + ": ");
+                    double danno = leer.nextDouble();
+                    leer.nextLine();
+                    System.out.println("Antiguo danno: " + modificar.getNombre());
+                    modificar.setAtaque(danno);
+                    System.out.println("Nuevo danno: " + modificar.getNombre());
+                    break OUTER;
+                }
+                default ->
+                {
+                    System.out.println("Input no valido :/");
+                    System.out.println("Ingrese otra vez");
+                }
+            }
+        }
+
+    }
+
+    public static void eliminarSpiderman() {
+        listarSpidermen();
+        System.out.print("Ingrese el indice del spiderman a eliminar: ");
+        int indice = leer.nextInt();
+        while (indice < 0 || indice > Spidermen.size())
+        {
+            System.out.println("Opcion no es valida");
+            System.out.println("Intente otra vez");
+            listarSpidermen();
+            System.out.print("Ingrese el indice del spiderman a eliminar: ");
+            indice = leer.nextInt();
+        }
+        leer.nextLine();
+        
+        Spidermen.remove(indice);
+    }
     
-}
+    public static void eliminarEnemigo() {
+        listarEnemigos();
+        System.out.print("Ingrese el indice del enemigo a eliminar: ");
+        int indice = leer.nextInt();
+        while (indice < 0 || indice > Enemigos.size())
+        {
+            System.out.println("Opcion no es valida");
+            System.out.println("Intente otra vez");
+            listarSpidermen();
+            System.out.print("Ingrese el indice del spiderman a eliminar: ");
+            indice = leer.nextInt();
+        }
+        leer.nextLine();
+        
+        Enemigos.remove(indice);
+    }
+}//fin clase
+
