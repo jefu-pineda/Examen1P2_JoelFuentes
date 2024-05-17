@@ -222,14 +222,7 @@ public class examen1p2_joelfuentes {
         OUTER:
         while (true)
         {
-            System.out.println("---Agregar Enemigo---");
-            System.out.println("1) Spiderman Blindado");
-            System.out.println("2) Spiderman Alterado");
-            System.out.println("3) Spiderman Alienigena");
-            System.out.print("Ingrese que tipo de Spiderman quiere crear: ");
-            int op = leer.nextInt();
-            leer.nextLine();
-            switch (op)
+            switch (opcion)
             {
                 case 1 ->
                 {
