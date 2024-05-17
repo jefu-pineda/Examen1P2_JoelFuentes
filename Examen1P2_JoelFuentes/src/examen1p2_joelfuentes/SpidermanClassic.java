@@ -15,7 +15,7 @@ public class SpidermanClassic extends Personaje{
     }
     
     @Override
-    void atacar(Personaje atacado) {
-        atacado.setVida((int) (atacado.getVida() - this.getAtaque()));
+    double atacar(Personaje atacado) {
+        return this.getAtaque();
     }
 }

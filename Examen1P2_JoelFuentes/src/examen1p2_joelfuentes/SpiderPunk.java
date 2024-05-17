@@ -15,12 +15,12 @@ public class SpiderPunk extends Personaje{
     }
     
     @Override
-    void atacar(Personaje atacado) {
+    double atacar(Personaje atacado) {
         if (atacado instanceof SpidermanBlindado)
         {
-            atacado.setVida((int) (atacado.getVida() - this.getAtaque()*1.15));
+            return this.getAtaque() * 1.15;
         } else {
-            atacado.setVida((int) (atacado.getVida() - this.getAtaque()));
+            return this.getAtaque();
         }
     }
 }

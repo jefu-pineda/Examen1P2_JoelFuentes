@@ -16,11 +16,11 @@ public class SpidermanBlindado extends Personaje{
     }
     
     @Override
-    void atacar(Personaje atacado) {
+    double atacar(Personaje atacado) {
         if(atacado instanceof SpidermanClassic) {
-            atacado.setVida((int) (atacado.getVida() - this.getAtaque()*1.10));
+            return this.getAtaque() * 1.1;
         } else {
-            atacado.setVida((int) (atacado.getVida() - this.getAtaque()));
+            return this.getAtaque();
         }
     }
 }

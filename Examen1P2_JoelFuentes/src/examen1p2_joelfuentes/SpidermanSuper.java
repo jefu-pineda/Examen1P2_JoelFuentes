@@ -18,7 +18,7 @@ public class SpidermanSuper extends Personaje {
     }
     
     @Override
-    void atacar(Personaje atacado) {
-        atacado.setVida((int) (atacado.getVida() - this.getAtaque()*rand.nextDouble(1.1,1.2)));
+    double atacar(Personaje atacado) {
+        return this.getAtaque() *  rand.nextDouble(1.1,1.2);
     }
 }

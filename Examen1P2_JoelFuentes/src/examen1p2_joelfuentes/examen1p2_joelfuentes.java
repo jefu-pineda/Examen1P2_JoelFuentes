@@ -47,9 +47,10 @@ public class examen1p2_joelfuentes {
         Enemigos.add(enemigo3);
         int opcion;
         boolean bandera = true;
+        System.out.println("Bienvenido");
         do
         {
-            System.out.println("1) Agregar Spiderman");
+            System.out.println("\n1) Agregar Spiderman");
             System.out.println("2) Agregar Enemigo");
             System.out.println("3) Listar Spidermen");
             System.out.println("4) Listar Enemigos");
@@ -65,11 +66,25 @@ public class examen1p2_joelfuentes {
             {
                 case 1 ->
                 {
-                    agregarSpiderman();
+                    System.out.println("---Agregar Spiderman---");
+                    System.out.println("1) Spiderman Classic");
+                    System.out.println("2) Spiderman Superior");
+                    System.out.println("3) SpiderPunk");
+                    System.out.print("Ingrese que tipo de Spiderman quiere crear: ");
+                    int op = leer.nextInt();
+                    leer.nextLine();
+                    agregarSpiderman(op);
                 }
                 case 2 ->
                 {
-                    agregarEnemigo();
+                    System.out.println("---Agregar Enemigo---");
+                    System.out.println("1) Spiderman Blindado");
+                    System.out.println("2) Spiderman Alterado");
+                    System.out.println("3) Spiderman Alienigena");
+                    System.out.print("Ingrese que tipo de Spiderman quiere crear: ");
+                    int op = leer.nextInt();
+                    leer.nextLine();
+                    agregarEnemigo(op);
                 }
                 case 3 ->
                 {
@@ -87,19 +102,47 @@ public class examen1p2_joelfuentes {
                 }
                 case 6 ->
                 {
-                    modificarSpiderman();
+                    listarSpidermen();
+                    System.out.print("Ingrese el indice del spiderman a modificar: ");
+                    int indice = leer.nextInt();
+                    while (indice < 0 || indice > Spidermen.size())
+                    {
+                        System.out.println("Indice invalido");
+                        listarSpidermen();
+                        System.out.print("Ingrese el indice del spiderman a modificar: ");
+                        indice = leer.nextInt();
+                    }
+                    modificarSpiderman(indice);
                 }
                 case 7 ->
                 {
-                    modificarEnemigo();
+                    listarEnemigos();
+                    System.out.print("Ingrese el indice del enemigo a modificar: ");
+                    int indice = leer.nextInt();
+                    while (indice < 0 || indice >= Spidermen.size())
+                    {
+                        System.out.println("Indice no valido");
+                        System.out.println("Intente otra vez");
+                        listarEnemigos();
+                        System.out.print("Ingrese el indice del spiderman a modificar: ");
+                        indice = leer.nextInt();
+                    }
+                    leer.nextLine();
+                    modificarEnemigo(indice);
                 }
                 case 8 ->
                 {
-                    eliminarSpiderman();
+                    listarSpidermen();
+                    System.out.print("Ingrese el indice del spiderman a eliminar: ");
+                    int indice = leer.nextInt();
+                    eliminarSpiderman(indice);
                 }
                 case 9 ->
                 {
-                    eliminarEnemigo();
+                    listarEnemigos();
+                    System.out.print("Ingrese el indice del enemigo a eliminar: ");
+                    int indice = leer.nextInt();
+                    eliminarEnemigo(indice);
                 }
                 case 10 ->
                 {
@@ -109,19 +152,12 @@ public class examen1p2_joelfuentes {
         } while (bandera);
     }
 
-    public static void agregarSpiderman() {
+    public static void agregarSpiderman(int opcion) {
         Personaje spiderman;
         OUTER:
         while (true)
         {
-            System.out.println("---Agregar Spiderman---");
-            System.out.println("1) Spiderman Classic");
-            System.out.println("2) Spiderman Superior");
-            System.out.println("3) SpiderPunk");
-            System.out.print("Ingrese que tipo de Spiderman quiere crear: ");
-            int op = leer.nextInt();
-            leer.nextLine();
-            switch (op)
+            switch (opcion)
             {
                 case 1 ->
                 {
@@ -181,7 +217,7 @@ public class examen1p2_joelfuentes {
 
     }
 
-    public static void agregarEnemigo() {
+    public static void agregarEnemigo(int opcion) {
         Personaje spiderman;
         OUTER:
         while (true)
@@ -281,22 +317,11 @@ public class examen1p2_joelfuentes {
         System.out.println("");
     }
 
-    public static void modificarSpiderman() {
+    public static void modificarSpiderman(int indice) {
         boolean bandera = true;
         OUTER:
         while (bandera)
         {
-            listarSpidermen();
-            System.out.print("Ingrese el indice del spiderman a modificar: ");
-            int indice = leer.nextInt();
-            if (indice < 0 || indice >= Spidermen.size())
-            {
-                System.out.println("Indice no valido");
-                System.out.println("Intente otra vez");
-                continue;
-            }
-            leer.nextLine();
-
             Personaje modificar = Spidermen.get(indice);
             System.out.println("Que desea modificar de " + modificar.getNombre());
             System.out.println("1) Nombre");
@@ -344,22 +369,11 @@ public class examen1p2_joelfuentes {
         }
     }
 
-    public static void modificarEnemigo() {
+    public static void modificarEnemigo(int indice) {
         boolean bandera = true;
         OUTER:
         while (bandera)
         {
-            listarEnemigos();
-            System.out.print("Ingrese el indice del enemigo a modificar: ");
-            int indice = leer.nextInt();
-            if (indice < 0 || indice >= Spidermen.size())
-            {
-                System.out.println("Indice no valido");
-                System.out.println("Intente otra vez");
-                continue;
-            }
-            leer.nextLine();
-
             Personaje modificar = Enemigos.get(indice);
             System.out.println("Que desea modificar de " + modificar.getNombre());
             System.out.println("1) Nombre");
@@ -408,10 +422,7 @@ public class examen1p2_joelfuentes {
 
     }
 
-    public static void eliminarSpiderman() {
-        listarSpidermen();
-        System.out.print("Ingrese el indice del spiderman a eliminar: ");
-        int indice = leer.nextInt();
+    public static void eliminarSpiderman(int indice) {
         while (indice < 0 || indice > Spidermen.size())
         {
             System.out.println("Opcion no es valida");
@@ -425,10 +436,7 @@ public class examen1p2_joelfuentes {
         Spidermen.remove(indice);
     }
 
-    public static void eliminarEnemigo() {
-        listarEnemigos();
-        System.out.print("Ingrese el indice del enemigo a eliminar: ");
-        int indice = leer.nextInt();
+    public static void eliminarEnemigo(int indice) {
         while (indice < 0 || indice > Enemigos.size())
         {
             System.out.println("Opcion no es valida");
@@ -470,35 +478,8 @@ public class examen1p2_joelfuentes {
                 System.out.println("Vida: " + enemigo.getVida());
                 System.out.println("Ataque " + enemigo.getAtaque());
                 System.out.println("\nPELEA!!!!\n");
-                while (spiderman.getVida() >= 0 && enemigo.getVida() >= 0)
-                {
-                    spiderman.atacar(enemigo);
-                    if (enemigo.getVida() < 0)
-                    {
-                        enemigo.setVida(0);
-                    }
-                    System.out.println(spiderman.getNombre() + " hace " + spiderman.getAtaque() + " a " + enemigo.getNombre());
-                    System.out.println("Vida de " + enemigo.getNombre() + ": " + enemigo.getVida());
-                    if (enemigo.getVida() <= 0)
-                    {
-                        ganador = spiderman;
-                        break;
-                    } else
-                    {
-                        enemigo.atacar(spiderman);
-                        if (spiderman.getVida() < 0)
-                        {
-                            spiderman.setVida(0);
-                        }
-                        System.out.println(enemigo.getNombre() + " hace " + enemigo.getAtaque() + " a " + spiderman.getNombre());
-                        System.out.println("Vida de " + spiderman.getNombre() + ": " + spiderman.getVida());
-                        if (spiderman.getVida() <= 0)
-                        {
-                            ganador = enemigo;
-                            break;
-                        }
-                    }
-                }
+                
+                ganador = pelea(spiderman, enemigo);
                 System.out.println("\nEL GANADOR ESSSSS....");
                 System.out.println(ganador.getNombre() + " del universo " + ganador.getUniverso());
                 if (ganador instanceof SpidermanClassic || ganador instanceof SpiderPunk || ganador instanceof SpidermanSuper)
@@ -517,11 +498,42 @@ public class examen1p2_joelfuentes {
             System.out.println("Spidermen: " + puntosSpider + ", Enemigos: " + puntosEnemigo);
             if (puntosSpider > puntosEnemigo)
             {
-                System.out.println("HAN VENCIDO LOS SPIDERMEN");
+                System.out.println("\nHAN VENCIDO LOS SPIDERMEN");
             } else if (puntosEnemigo < puntosSpider)
             {
-                System.out.println("HAN VENCIDO LOS ENEMIGOS");
+                System.out.println("\nHAN VENCIDO LOS ENEMIGOS");
+            } else
+            {
+                System.out.println("\nES UN EMPATEEEEEE!!!");
+                System.out.println("---Desempate---");
+                Personaje desempateSpider = new SpidermanClassic("Spiderman que desempata", "0001 >:)");
+                Personaje desempateEnemigo = new SpidermanAlter("Enemigo que no lo quiere dejar desempatar", "1000 >:(");
+                
+                int dannoSpider = 0;
+                int vidaSpider = 0;
+                for(Personaje spiderman: Spidermen) {
+                    dannoSpider += spiderman.getAtaque();
+                    vidaSpider += spiderman.getVida();
+                }
+                desempateSpider.setAtaque(dannoSpider);
+                desempateSpider.setVida(vidaSpider);
+                
+                int dannoEnemigo = 0;
+                int vidaEnemigo = 0;
+                for (Personaje enemigo: Enemigos) {
+                    dannoEnemigo += enemigo.getAtaque();
+                    vidaEnemigo += enemigo.getVida();
+                }
+                desempateEnemigo.setAtaque(dannoEnemigo);
+                desempateEnemigo.setVida(vidaEnemigo);
+                
+                Personaje ganador = pelea(desempateSpider, desempateEnemigo);
+                if (ganador.equals(desempateSpider))
+                {
+                    System.out.println("");
+                }
             }
+            System.out.println("Volviendo al menu principal...");
         }
     }
 
@@ -534,6 +546,43 @@ public class examen1p2_joelfuentes {
         {
             enemigo.setVida(rand.nextInt(200, 600));
         }
+    }
+
+    public static Personaje pelea(Personaje spiderman, Personaje enemigo) {
+        Personaje ganador = null;
+        while (spiderman.getVida() >= 0 && enemigo.getVida() >= 0)
+        {
+            double dannoSpider = spiderman.atacar(enemigo);
+            double dannoEnemigo = enemigo.atacar(spiderman);
+
+            System.out.printf(spiderman.getNombre() + " hace %.2f" + " a " + enemigo.getNombre() + "\n", dannoSpider);
+            enemigo.setVida((enemigo.getVida() - dannoSpider));
+            if (enemigo.getVida() < 0)
+            {
+                enemigo.setVida(0);
+            }
+            System.out.printf("Vida de " + enemigo.getNombre() + ": %.2f\n", enemigo.getVida());
+            if (enemigo.getVida() <= 0)
+            {
+                ganador = spiderman;
+                break;
+            } else
+            {
+                System.out.printf(enemigo.getNombre() + " hace %.2f" + " a " + spiderman.getNombre() + "\n", dannoEnemigo);
+                spiderman.setVida((spiderman.getVida() - dannoEnemigo));
+                if (spiderman.getVida() < 0)
+                {
+                    spiderman.setVida(0);
+                }
+                System.out.printf("Vida de " + spiderman.getNombre() + ": %.2f\n", spiderman.getVida());
+                if (spiderman.getVida() <= 0)
+                {
+                    ganador = enemigo;
+                    break;
+                }
+            }
+        }
+        return ganador;
     }
 }//fin clase
 

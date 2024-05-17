@@ -11,11 +11,11 @@ package examen1p2_joelfuentes;
 public abstract class Personaje {
     private String nombre;
     private double ataque = 0;
-    private int vida = 0;
+    private double vida = 0;
     private String universo;
     
     
-    abstract void atacar(Personaje atacado);
+    abstract double atacar(Personaje atacado);
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -25,7 +25,7 @@ public abstract class Personaje {
         this.ataque = ataque;
     }
 
-    public void setVida(int vida) {
+    public void setVida(double vida) {
         this.vida = vida;
     }
 
@@ -41,7 +41,7 @@ public abstract class Personaje {
         return ataque;
     }
 
-    public int getVida() {
+    public double getVida() {
         return vida;
     }
 
