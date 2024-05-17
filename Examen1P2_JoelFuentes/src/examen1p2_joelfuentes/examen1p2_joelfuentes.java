@@ -152,6 +152,7 @@ public class examen1p2_joelfuentes {
         } while (bandera);
     }
 
+    //crea un spiderman esepcificado y lo agrega al array list de spidermen
     public static void agregarSpiderman(int opcion) {
         Personaje spiderman;
         OUTER:
@@ -218,6 +219,7 @@ public class examen1p2_joelfuentes {
 
     }
 
+    //crea un enemigo esepcificado y lo agrega al array list de enemigos
     public static void agregarEnemigo(int opcion) {
         Personaje spiderman;
         OUTER:
@@ -282,6 +284,7 @@ public class examen1p2_joelfuentes {
         System.out.println("Volviendo al menu principal");
     }
 
+    //imprime el array de spidermen
     public static void listarSpidermen() {
         for (int i = 0; i < Spidermen.size(); i++)
         {
@@ -290,6 +293,7 @@ public class examen1p2_joelfuentes {
         System.out.println("");
     }
 
+    //imprime el array de enemigos
     public static void listarEnemigos() {
         for (int i = 0; i < Enemigos.size(); i++)
         {
@@ -298,6 +302,7 @@ public class examen1p2_joelfuentes {
         System.out.println("");
     }
 
+    //imprime los dos arrays, en cada linea un nuevo spiderman o enemigo, sin formato
     public static void listarTodos() {
         System.out.println("");
         for (Personaje spiderman : Spidermen)
@@ -312,6 +317,7 @@ public class examen1p2_joelfuentes {
         System.out.println("");
     }
 
+    //modifica un spiderman de la lista en el indice especificado
     public static void modificarSpiderman(int indice) {
         boolean bandera = true;
         OUTER:
@@ -366,6 +372,7 @@ public class examen1p2_joelfuentes {
         System.out.println("Volviendo al menu...");
     }
 
+    //modifica un enemigo en el indice de la lista especificado
     public static void modificarEnemigo(int indice) {
         boolean bandera = true;
         OUTER:
@@ -420,6 +427,7 @@ public class examen1p2_joelfuentes {
         System.out.println("Volviendo al menu...");
     }
 
+    //elimina un spiderman de la lista en el indice especificado
     public static void eliminarSpiderman(int indice) {
         while (indice < 0 || indice > Spidermen.size())
         {
@@ -435,6 +443,7 @@ public class examen1p2_joelfuentes {
         Spidermen.remove(indice);
     }
 
+    //modifica un enemigo en la lista ene le indice especificado
     public static void eliminarEnemigo(int indice) {
         while (indice < 0 || indice > Enemigos.size())
         {
@@ -450,6 +459,7 @@ public class examen1p2_joelfuentes {
         Enemigos.remove(indice);
     }
 
+    //metodo de la simulacion
     public static void jugar() {
         int puntosSpider = 0;
         int puntosEnemigo = 0;
@@ -549,6 +559,7 @@ public class examen1p2_joelfuentes {
         }
     }
 
+    //contiene la logica de la pelea, retorna el ganador
     public static Personaje pelea(Personaje spiderman, Personaje enemigo) {
         Personaje ganador = null;
         while (spiderman.getVida() >= 0 && enemigo.getVida() >= 0)
