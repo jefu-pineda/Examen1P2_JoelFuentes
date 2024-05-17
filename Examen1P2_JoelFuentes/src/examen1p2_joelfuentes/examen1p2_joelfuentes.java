@@ -52,17 +52,21 @@ public class examen1p2_joelfuentes {
             opcion = leer.nextInt();
             switch (opcion)
             {
-                case 1 -> {
+                case 1 ->
+                {
                     agregarSpiderman();
-                } 
-                case 2 -> {
+                }
+                case 2 ->
+                {
                     agregarEnemigo();
                 }
-                case 3 -> {
+                case 3 ->
+                {
                     listarSpidermen();
                 }
-                case 4 -> {
-                    
+                case 4 ->
+                {
+
                 }
             }
         } while (bandera);
@@ -372,10 +376,10 @@ public class examen1p2_joelfuentes {
             indice = leer.nextInt();
         }
         leer.nextLine();
-        
+
         Spidermen.remove(indice);
     }
-    
+
     public static void eliminarEnemigo() {
         listarEnemigos();
         System.out.print("Ingrese el indice del enemigo a eliminar: ");
@@ -389,24 +393,81 @@ public class examen1p2_joelfuentes {
             indice = leer.nextInt();
         }
         leer.nextLine();
-        
+
         Enemigos.remove(indice);
     }
-    
+
     public static void jugar() {
-        if (Spidermen.size() != Enemigos.size()) {
+        int puntosSpider = 0;
+        int puntosEnemigo = 0;
+        if (Spidermen.size() != Enemigos.size())
+        {
             System.out.println("Deben haber mismo numero de spidermen como de enemigos");
-        } else {
+        } else
+        {
             Collections.shuffle(Spidermen);
             Collections.shuffle(Enemigos);
+            asignarVida();
+
+            for (int i = 0; i < Spidermen.size(); i++)
+            {
+                Personaje spiderman = Spidermen.get(i);
+                Personaje enemigo = Enemigos.get(i);
+                Personaje ganador = null;
+                System.out.println("Siguiente Batalla: ");
+                System.out.println("----Batalla #" + i + "----");
+                System.out.println("Spiderman Peleador: ");
+                System.out.println(spiderman.getNombre() + " del universo " + spiderman.getUniverso());
+                System.out.println("Enemigo Contricante: ");
+                System.out.println(enemigo.getNombre() + " del universo " + enemigo.getUniverso());
+                System.out.println("PELEA!!!!");
+                while (spiderman.getVida() >= 0 && enemigo.getVida() >= 0)
+                {
+                    spiderman.atacar(enemigo);
+                    if (enemigo.getVida() <= 0)
+                    {
+                        ganador = spiderman;
+                        break;
+                    } else
+                    {
+                        enemigo.atacar(spiderman);
+                        if (spiderman.getVida() <= 0)
+                        {
+                            ganador = enemigo;
+                            break;
+                        }
+                    }
+                }
+                System.out.println("EL GANADOR ESSSSS....");
+                System.out.println(ganador.getNombre() + " del universo " + ganador.getUniverso());
+                if (ganador instanceof SpidermanClassic || ganador instanceof SpiderPunk || ganador instanceof SpidermanSuper) {
+                    puntosSpider++;
+                } else {
+                    puntosEnemigo++;
+                }
+                
+                System.out.println("Spidermen: " + puntosSpider + ", Enemigos: " + puntosEnemigo);
+            }
+            
+            System.out.println("BATALLA FINALIZADA");
+            System.out.println("Puntaje final: ");
+            System.out.println("Spidermen: " + puntosSpider + ", Enemigos: " + puntosEnemigo);
+            if (puntosSpider > puntosEnemigo)
+            {
+                System.out.println("HAN VENCIDO LOS SPIDERMEN"); 
+            } else if (puntosEnemigo < puntosSpider) {
+                System.out.println("HAN VENCIDO LOS ENEMIGOS");
+            }
         }
     }
-    
+
     public static void asignarVida() {
-        for(Personaje spiderman: Spidermen) {
+        for (Personaje spiderman : Spidermen)
+        {
             spiderman.setVida(rand.nextInt(200, 600));
         }
-        for(Personaje enemigo: Enemigos) {
+        for (Personaje enemigo : Enemigos)
+        {
             enemigo.setVida(rand.nextInt(200, 600));
         }
     }
