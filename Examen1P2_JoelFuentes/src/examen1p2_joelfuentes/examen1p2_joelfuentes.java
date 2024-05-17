@@ -392,5 +392,23 @@ public class examen1p2_joelfuentes {
         
         Enemigos.remove(indice);
     }
+    
+    public static void jugar() {
+        if (Spidermen.size() != Enemigos.size()) {
+            System.out.println("Deben haber mismo numero de spidermen como de enemigos");
+        } else {
+            Collections.shuffle(Spidermen);
+            Collections.shuffle(Enemigos);
+        }
+    }
+    
+    public static void asignarVida() {
+        for(Personaje spiderman: Spidermen) {
+            spiderman.setVida(rand.nextInt(200, 600));
+        }
+        for(Personaje enemigo: Enemigos) {
+            enemigo.setVida(rand.nextInt(200, 600));
+        }
+    }
 }//fin clase
 
